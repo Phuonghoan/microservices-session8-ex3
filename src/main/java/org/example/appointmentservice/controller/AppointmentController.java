@@ -1,6 +1,6 @@
 package org.example.appointmentservice.controller;
 
-import org.example.appointmentservice.service.DoctorService;
+import org.example.appointmentservice.service.AppointmentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/appointments")
 public class AppointmentController {
 
-    private final DoctorService doctorService;
+    private final AppointmentService appointmentService;
 
-    public AppointmentController(DoctorService doctorService) {
-        this.doctorService = doctorService;
+    public AppointmentController(AppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
     }
 
-    @GetMapping("/doctor/{doctorId}")
-    public ResponseEntity<?> getDoctor(
-            @PathVariable Long doctorId
+    @GetMapping("/patient/{patientId}")
+    public ResponseEntity<?> getPatient(
+            @PathVariable Long patientId
     ) {
-        return doctorService.getDoctor(doctorId);
+        return appointmentService.getPatient(patientId);
     }
 }
